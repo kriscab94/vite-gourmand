@@ -1,0 +1,49 @@
+@startuml
+left to right direction
+
+actor "Utilisateur" as User
+actor "Employé" as Employe
+actor "Admin" as Admin
+
+rectangle "Vite & Gourmand" {
+
+  (Consulter menus) as UC1
+  (Filtrer menus dynamiquement) as UC2
+  (Créer un compte) as UC3
+  (Se connecter) as UC4
+  (Commander un menu) as UC5
+  (Suivre une commande) as UC6
+  (Annuler une commande) as UC7
+  (Déposer un avis) as UC8
+
+  (Consulter commandes clients) as EC1
+  (Modifier statut commande) as EC2
+  (Valider / Refuser avis) as EC3
+
+  (Créer un employé) as AC1
+  (Désactiver / Réactiver employé) as AC2
+  (Voir stats MongoDB) as AC3
+  (Voir chiffre d'affaires) as AC4
+}
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+User --> UC5
+User --> UC6
+User --> UC7
+User --> UC8
+
+Employe --> EC1
+Employe --> EC2
+Employe --> EC3
+
+Admin --> AC1
+Admin --> AC2
+Admin --> AC3
+Admin --> AC4
+
+UC8 ..> EC3 : "avis visible si validé"
+
+@enduml

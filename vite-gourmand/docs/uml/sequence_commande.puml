@@ -1,0 +1,24 @@
+@startuml
+actor Utilisateur as U
+participant "Interface Web" as UI
+participant "PHP Controller" as PHP
+database "MySQL" as SQL
+database "MongoDB" as MONGO
+
+U -> UI : Clique "Commander"
+UI -> PHP : POST commande (adresse, ville, km, date, heure, nb personnes)
+
+PHP -> PHP : Validation serveur (champs, stock, nb min)
+PHP -> PHP : Calcul prix menu + livraison + remise
+
+PHP -> SQL : INSERT commandes
+SQL --> PHP : commande_id
+
+PHP -> SQL : INSERT historique statut (en attente)
+PHP -> SQL : UPDATE menus stock -1
+
+PHP -> MONGO : INSERT document statistiques (commande_id, menu, prix_total, date)
+
+PHP --> UI : Confirmation commande
+UI --> U : Message "Commande créée"
+@enduml
