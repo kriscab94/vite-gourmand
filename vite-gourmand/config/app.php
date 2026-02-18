@@ -6,7 +6,6 @@ $host = $_SERVER["HTTP_HOST"] ?? "";
 |--------------------------------------------------------------------------
 | Détection environnement
 |--------------------------------------------------------------------------
-| Local (XAMPP) ou Production (Render)
 */
 
 $isLocal =
@@ -21,10 +20,9 @@ $isLocal =
 */
 
 if ($isLocal) {
-    // XAMPP
+    // Local XAMPP
     define('BASE_URL', '/vite-gourmand/public');
 } else {
-    // Render / Production
+    // Production Render
     define('BASE_URL', '');
 }
-
