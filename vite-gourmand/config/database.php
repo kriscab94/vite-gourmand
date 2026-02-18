@@ -1,17 +1,20 @@
 <?php
 
-$host = "localhost";
-$dbname = "vite_gourmand";
-$username = "root";
-$password = "Fifaestlenum1";
+$host = $_ENV["DB_HOST"] ?? "localhost";
+$port = $_ENV["DB_PORT"] ?? "3306";
+$db   = $_ENV["DB_NAME"] ?? "vite_gourmand";
+$user = $_ENV["DB_USER"] ?? "root";
+$pass = $_ENV["DB_PASS"] ?? "";
 
-$pdo = new PDO(
-  "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
-  $username,
-  $password,
-  [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
-  ]
-);
+$dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4";
+
+try {
+    $pdo = new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]);
+} catch (PDOException $e) {
+    die("Erreur connexion BDD : " . $e->getMessage());
+}
+
+
