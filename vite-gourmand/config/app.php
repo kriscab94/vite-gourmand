@@ -1,6 +1,7 @@
 <?php
-// Si tu es en ligne (Render), on met base vide.
-// En local XAMPP, le projet est dans /vite-gourmand/public/
-$isProd = !empty($_ENV["RENDER"]) || !empty($_ENV["RENDER_SERVICE_ID"]);
+$host = $_SERVER["HTTP_HOST"] ?? "";
 
-define("BASE_URL", $isProd ? "" : "/vite-gourmand/public");
+// Local si on est sur localhost / 127.0.0.1
+$isLocal = ($host === "localhost" || str_starts_with($host, "127.0.0.1") || str_contains($host, "localhost"));
+
+define("BASE_URL", $isLocal ? "/vite-gourmand/public" : "");
