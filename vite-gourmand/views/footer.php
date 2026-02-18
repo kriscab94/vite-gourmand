@@ -33,9 +33,10 @@ $horaires = $stmtH->fetchAll(PDO::FETCH_ASSOC);
 
       <div class="col-md-4 mb-3">
         <h5>Liens</h5>
-        <a class="text-light d-block" href="<?= BASE_URL ?>/mentions.php">Mentions légales</a>
-        <a class="text-light d-block" href="<?= BASE_URL ?>/cgv.php">CGV</a>
-        <a class="text-light d-block" href="<?= BASE_URL ?>/contact.php">Contact</a>
+        <a class="text-light d-block" href="<?= BASE_URL ?>/mentions-legales.php">Mentions légales</a>
+<a class="text-light d-block" href="<?= BASE_URL ?>/cgv.php">CGV</a>
+<a class="text-light d-block" href="<?= BASE_URL ?>/contact.php">Contact</a>
+
       </div>
 
     </div>
@@ -44,3 +45,4 @@ $horaires = $stmtH->fetchAll(PDO::FETCH_ASSOC);
     <p class="mb-0 text-center">&copy; <?= date("Y"); ?> Vite & Gourmand</p>
   </div>
 </footer>
+
