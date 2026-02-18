@@ -1,22 +1,16 @@
 FROM php:8.2-apache
 
-# Fix Apache: ne charger qu'un seul MPM (prefork)
-RUN a2dismod mpm_event mpm_worker || true \
+# ---- FIX Apache MPM (OBLIGATOIRE) ----
+RUN a2dismod mpm_event || true \
+ && a2dismod mpm_worker || true \
  && a2enmod mpm_prefork
-
-# Installer dépendances système
-RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    libssl-dev \
-    pkg-config
 
 # Installer extensions PHP
 RUN docker-php-ext-install pdo pdo_mysql
 
-# Installer MongoDB extension (version stable)
-RUN pecl install mongodb-1.18.1 \
-    && docker-php-ext-enable mongodb
+# Installer MongoDB extension
+RUN pecl install mongodb \
+ && docker-php-ext-enable mongodb
 
 # Apache -> dossier public
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
