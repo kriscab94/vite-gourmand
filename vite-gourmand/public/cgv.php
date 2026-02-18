@@ -9,20 +9,14 @@
 <body class="bg-light">
 <?php require_once("../views/navbar.php"); ?>
 
-<div class="container mt-5">
-  <h1>Conditions Générales de Vente (CGV)</h1>
-
-  <h3>Commandes</h3>
-  <p>Les commandes doivent être passées selon les conditions affichées sur chaque menu.</p>
-
-  <h3>Annulation</h3>
-  <p>Une commande peut être annulée par le client tant que le statut est “en attente”.</p>
-
-  <h3>Livraison</h3>
-  <p>Les frais de livraison dépendent de la zone et de la distance (Bordeaux / hors Bordeaux).</p>
-
-  <h3>Paiement</h3>
-  <p>Paiement à la livraison (à adapter selon le projet).</p>
+<div class="container mt-5" style="max-width: 900px;">
+  <h1>Conditions Générales de Vente</h1>
+  <div class="card shadow mt-4">
+    <div class="card-body">
+      <p>Document simplifié (projet pédagogique).</p>
+      <p>Les commandes sont soumises à validation, paiement et disponibilité.</p>
+    </div>
+  </div>
 </div>
 
 <?php require_once("../views/footer.php"); ?>
