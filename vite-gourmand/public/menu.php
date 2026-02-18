@@ -1,6 +1,6 @@
 <?php
-require_once("../config/database.php");
 session_start();
+require_once("../config/database.php");
 
 // Vérifier si ID existe
 if(!isset($_GET['id'])){
@@ -77,3 +77,4 @@ $plats = $stmtPlats->fetchAll(PDO::FETCH_ASSOC);
 
 </body>
 </html>
+
