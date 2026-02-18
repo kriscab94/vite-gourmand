@@ -1,6 +1,6 @@
 <?php
-require_once("../../config/database.php");
 session_start();
+require_once("../../config/database.php");
 
 // Vérifier rôle employé ou admin
 if (!isset($_SESSION["user"]) || 
@@ -132,3 +132,4 @@ $statuts = ["", "en attente", "annulee", "accepté", "en préparation", "en cour
 <?php require_once("../../views/footer.php"); ?>
 </body>
 </html>
+
