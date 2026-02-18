@@ -1,6 +1,6 @@
 <?php
-require_once("../../config/database.php");
 session_start();
+require_once("../../config/database.php");
 
 if (!isset($_SESSION["user"]) || $_SESSION["user"]["role"] !== "admin") {
     die("Accès interdit");
@@ -19,3 +19,4 @@ $stmt->execute([$active, $id]);
 
 header("Location: employees.php");
 exit;
+
