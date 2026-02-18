@@ -1,6 +1,7 @@
 <?php
-require_once("../../config/database.php");
 session_start();
+require_once("../../config/database.php");
+
 
 if (!isset($_SESSION["user"]) || 
    ($_SESSION["user"]["role"] !== "employe" && $_SESSION["user"]["role"] !== "admin")) {
@@ -19,3 +20,4 @@ $stmt->execute([$val, $id]);
 
 header("Location: reviews.php");
 exit;
+
