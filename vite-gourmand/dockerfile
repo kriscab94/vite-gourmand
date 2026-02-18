@@ -1,20 +1,26 @@
-FROM php:8.2-apache
+FFROM php:8.2-apache
 
-# Installer extensions PHP nécessaires
+# Installer dépendances système
 RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
     libssl-dev \
-    && pecl install mongodb \
-    && docker-php-ext-enable mongodb \
-    && docker-php-ext-install pdo pdo_mysql
+    pkg-config
 
-# Faire pointer Apache vers /public
+# Installer extensions PHP
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Installer MongoDB extension (version stable)
+RUN pecl install mongodb-1.18.1 \
+    && docker-php-ext-enable mongodb
+
+# Apache -> dossier public
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
  && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-# Copier le projet
+# Copier projet
 COPY . /var/www/html
 
 RUN chown -R www-data:www-data /var/www/html
-
