@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("../../config/database.php");
+require_once("../../config/mongo_native.php"); 
 
 if (!isset($_SESSION["user"]) || $_SESSION["user"]["role"] !== "admin") {
     die("Accès interdit");
@@ -67,4 +68,5 @@ new Chart(document.getElementById('chart'), {
 <?php require_once("../../views/footer.php"); ?>
 </body>
 </html>
+
 
