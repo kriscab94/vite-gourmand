@@ -1,6 +1,6 @@
 <?php
-require_once("../config/database.php");
 session_start();
+require_once("../config/database.php");
 
 // Vérifier que l'utilisateur est connecté
 if (!isset($_SESSION["user"])) {
@@ -112,3 +112,4 @@ $commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </body>
 </html>
+
