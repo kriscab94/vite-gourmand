@@ -1,6 +1,6 @@
 <?php
-require_once("../../config/database.php");
 session_start();
+require_once("../../config/database.php");
 
 $error = "";
 
@@ -63,3 +63,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php require_once("../../views/footer.php"); ?>
 </body>
 </html>
+
