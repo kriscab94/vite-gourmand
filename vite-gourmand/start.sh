@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+PORT_TO_USE="${PORT:-80}"
+
+# Apache écoute le port Railway
+sed -i "s/Listen 80/Listen ${PORT_TO_USE}/" /etc/apache2/ports.conf
+sed -i "s/:80/:${PORT_TO_USE}/" /etc/apache2/sites-enabled/000-default.conf
+
+apache2-foreground
