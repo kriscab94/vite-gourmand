@@ -1,6 +1,8 @@
 <?php
 
-$mongoManager = new MongoDB\Driver\Manager("mongodb://127.0.0.1:27017");
+$mongoUri = $_ENV["MONGO_URL"] ?? "mongodb://127.0.0.1:27017";
+
+$mongoManager = new MongoDB\Driver\Manager($mongoUri);
 
 $mongoDbName = "vite_gourmand_stats";
 $mongoCollection = "commandes_stats";
