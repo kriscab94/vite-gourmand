@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("../config/database.php");
 
 // Récupérer les menus
@@ -179,3 +180,4 @@ document.getElementById("resetBtn").addEventListener("click", () => {
 
 </body>
 </html>
+
