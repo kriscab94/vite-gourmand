@@ -1,9 +1,30 @@
 <?php
+
 $host = $_SERVER["HTTP_HOST"] ?? "";
 
-// Local si on est sur localhost / 127.0.0.1
-$isLocal = ($host === "localhost" || str_starts_with($host, "127.0.0.1") || str_contains($host, "localhost"));
+/*
+|--------------------------------------------------------------------------
+| Détection environnement
+|--------------------------------------------------------------------------
+| Local (XAMPP) ou Production (Render)
+*/
 
-<?php
-define('BASE_URL', '');
+$isLocal =
+    $host === "localhost" ||
+    str_starts_with($host, "127.0.0.1") ||
+    str_contains($host, "localhost");
+
+/*
+|--------------------------------------------------------------------------
+| URL de base
+|--------------------------------------------------------------------------
+*/
+
+if ($isLocal) {
+    // XAMPP
+    define('BASE_URL', '/vite-gourmand/public');
+} else {
+    // Render / Production
+    define('BASE_URL', '');
+}
 
